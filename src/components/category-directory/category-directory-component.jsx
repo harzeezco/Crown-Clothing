@@ -1,40 +1,16 @@
+import PropTypes from "prop-types";
 import CategoryItem from "../category-item/category-item.component";
-import "../category-item/category-item-styles.scss";
 
-const CategoryDirectory = () => {
-  const categories = [
-    {
-      id: 1,
-      title: "hats",
-      imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
-    },
-    {
-      id: 2,
-      title: "jackets",
-      imageUrl: "https://i.ibb.co/px2tCc3/jackets.png",
-    },
-    {
-      id: 3,
-      title: "sneakers",
-      imageUrl: "https://i.ibb.co/0jqHpnp/sneakers.png",
-    },
-    {
-      id: 4,
-      title: "womens",
-      imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
-    },
-    {
-      id: 5,
-      title: "mens",
-      imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
-    },
-  ];
-
+const CategoryDirectory = ({ category }) => {
   return (
-    <div className="categories-container">
-      <CategoryItem category={categories} />
-    </div>
+    <>
+      <CategoryItem category={category} />
+    </>
   );
+};
+
+CategoryDirectory.propTypes = {
+  category: PropTypes.array.isRequired,
 };
 
 export default CategoryDirectory;

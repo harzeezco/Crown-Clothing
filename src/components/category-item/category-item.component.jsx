@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
+import "./category-item-styles.scss";
 
 const CategoryItem = ({ category }) => {
-  console.log(category);
   return (
     <>
-      {category.map((categoryData) => {
-        const { id, title, imageUrl } = categoryData;
+      {category.map((data) => {
+        const { id, title, imageUrl } = data;
         return (
           <div key={id} className="category-container">
             <div
@@ -15,11 +15,11 @@ const CategoryItem = ({ category }) => {
             <div className="category-body-container">
               <h2>{title}</h2>
               <p>Shop now</p>
-            </div>
+            </div>  
           </div>
         );
       })}
-    </>
+    </> 
   );
 };
 
