@@ -1,4 +1,4 @@
-import SignInform from "../../components/sign-in-form copy/sign-in-form-component";
+import SignInform from "../../components/sign-in-form/sign-in-form-component";
 import SignUpform from "../../components/sign-up-form/sign-up-form-component";
 
 import "./Authentication.styles.scss";

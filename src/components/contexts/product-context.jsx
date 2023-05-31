@@ -1,12 +1,19 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
-import Shop_Data from "../../shop-data.json";
+import { getCategoriesAndDocuments } from "../../utils/firebase/firebase-component.jsx";
 
 export const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
-  const [product, setProduct] = useState(Shop_Data);
+  const [product, setProduct] = useState([]);
+
+  useEffect(() => {
+    return async () => {
+      const categoriesData = await getCategoriesAndDocuments();
+      setProduct(categoriesData);
+    };
+  }, []);
 
   const value = { product };
 

@@ -1,3 +1,10 @@
+import {
+  LogoContainer,
+  NavLink,
+  NavLinks,
+  NavigationContainer,
+} from "./navigation-styles";
+
 import { useContext } from "react";
 import { UserContext } from "../../components/contexts/context-component";
 import { CartContext } from "../../components/contexts/cart-context";
@@ -5,10 +12,11 @@ import { CartContext } from "../../components/contexts/cart-context";
 import { signOutUser } from "../../utils/firebase/firebase-component";
 
 import { Link, Outlet } from "react-router-dom";
-import "./navigation-component.scss";
+
 import Logo from "../../assets/crown.svg";
 import CartIcon from "../../components/cart-icon/cart-icon-component";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown-component";
+// import { NavigationContainer } from "./navigation-styles";
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
@@ -20,31 +28,27 @@ const Navigation = () => {
 
   return (
     <>
-      <div className="navigation">
-        <Link to="/" className="logo-container">
+      <NavigationContainer>
+        <LogoContainer to="/" className="logo-container">
           <img src={Logo} alt="logo image" />
-        </Link>
+        </LogoContainer>
 
-        <div className="nav-links-container">
-          <Link to="shop" className="nav-link">
-            SHOP
-          </Link>
+        <NavLinks>
+          <NavLink to="shop">SHOP</NavLink>
 
           {currentUser ? (
-            <Link to="/auth" className="nav-link" onClick={signOutUser}>
+            <NavLink to="/auth" onClick={signOutUser}>
               SIGN OUT
-            </Link>
+            </NavLink>
           ) : (
-            <Link to="/auth" className="nav-link">
-              SIGN IN
-            </Link>
+            <NavLink to="/auth">SIGN IN</NavLink>
           )}
 
           <CartIcon onClick={handleCartDropDown} />
-        </div>
+        </NavLinks>
 
         {cartClick && <CartDropdown />}
-      </div>
+      </NavigationContainer>
       <Outlet />
     </>
   );

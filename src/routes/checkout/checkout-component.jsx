@@ -32,7 +32,7 @@ const Checkout = () => {
       ))}
 
       <span className="total">
-        {cartProduct.length === 0 ? "Total: $0 " : `Total: ${totalCart}`}
+        {cartProduct.length === 0 ? "Total: $0 " : `Total: $${totalCart}`}
       </span>
     </div>
   );

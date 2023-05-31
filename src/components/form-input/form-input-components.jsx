@@ -1,22 +1,17 @@
 import PropTypes from "prop-types";
-import "./form-input-component.scss";
+import { FormInputLabel, Group, FormInputField } from "./form-input-component";
 
 const FormInput = ({ label, ...otherProps }) => {
   return (
-    <div className="group">
-      <input className="form-input" {...otherProps} />
+    <Group>
+      <FormInputField className="form-input" {...otherProps} />
 
       {label && (
-        <label
-          className={`${
-            otherProps.value.length ? "shrink" : ""
-          } form-input-label`}
-          htmlFor={label}
-        >
+        <FormInputLabel shrink={otherProps.value.length} htmlFor={label}>
           {label}
-        </label>
+        </FormInputLabel>
       )}
-    </div>
+    </Group>
   );
 };
 
