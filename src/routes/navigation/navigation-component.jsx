@@ -20,10 +20,10 @@ import CartDropdown from "../../components/cart-dropdown/cart-dropdown-component
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
-  const { setCartClick, cartClick } = useContext(CartContext);
+  const { dispatch, cartClick } = useContext(CartContext);
 
   const handleCartDropDown = () => {
-    setCartClick(!cartClick);
+    dispatch({ type: "TOGGLE_CART_DROPDOWN", payload: !cartClick });
   };
 
   return (

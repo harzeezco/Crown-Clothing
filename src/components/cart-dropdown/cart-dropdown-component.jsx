@@ -15,13 +15,13 @@ import {
 } from "./cart-dropdown.styles.jsx";
 
 const CartDropdown = () => {
-  const { cartProduct, setCartClick } = useContext(CartContext);
+  const { cartProduct, dispatch } = useContext(CartContext);
 
   const navigate = useNavigate();
 
   const handleCheckOut = () => {
     navigate("/shop/checkout");
-    setCartClick(false);
+    dispatch({ type: "CART_DROPDOWN_OPEN", payload: false });
   };
 
   return (
